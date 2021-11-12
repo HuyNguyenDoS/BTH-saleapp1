@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+</head>
+<body>
+    <h1>Chi tiết sản phẩm</h1>
+    <div>
+        <img src="{{ url_for('static', filename=product_id.image) }}" width="120px" alt="{{product_id.name}}" />
+    </div>
+    <div>
+        <ul>
+            <li>{{ product_id.name }}</li>
+            <li>{{ product_id.description }}</li>
+            <li>{{ product_id.price }} VNĐ</li>
+        </ul>
+    </div>
+</body>
+</html>
