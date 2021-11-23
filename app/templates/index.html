@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Trang chủ</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-            rel="stylesheet" />
-    <link href="{{ url_for('static', filename='css/style.css') }}"
-          rel="stylesheet" />
-</head>
-<body>
-    <h1 class="text-center">BÁN HÀNG TRỰC TUYẾN</h1>
-    <ul>
-        <li><a href="{{ url_for('products_list') }}">Tat ca san pham</a></li>
-        {% for c in categories %}
-        <li><a href="/products?category_id={{c.id}}"> {{ c.name }}</a></li>
+{% extends 'layout/base.html' %}
+
+{% block title%} TRANG CHU {% endblock %}
+
+ {% block content%}
+ <h1 class="text-center">BÁN HÀNG TRỰC TUYẾN</h1>
+
+<div class="container">
+    {% if products %}
+    <div class="row">
+        {% for p in products %}
+        <div class="col-md-3 col-xs-12" style="padding:5px">
+            <div class="card" style="padding:5px">
+                <img class="card-img-top" src="{{url_for('static', filename=p.image)}}" alt="{{p.name}}">
+                  <div class="card-body">
+                    <h4 class="card-title">{{ p.name }}</h4>
+                    <p class="card-text">{{ "{:,.1f}".format(p.price) }} VND</p>
+                    <a href="#" class="btn btn-primary">Dat hang</a>
+                  </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-</body>
-</html>
+    </div>
+    {% else %}
+        <p>
+            <i>Khong co san pham nao</i>
+        </p>
+    {% endif %}
+</div>
+
+{% endblock %}
+

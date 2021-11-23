@@ -20,3 +20,7 @@
  "image": "images/iphone11.png",
  "category_id": 1
 }]
+// for p in products:
+//   p = Product(name=p['name'], description=p['description'], price=p['price'], category_id=p['category_id'], image=p['image']
+//   db.sesion.add(p)
+// db.session.commit()
